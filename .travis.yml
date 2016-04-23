@@ -1,0 +1,22 @@
+language: php
+
+php:
+    - '7.0'
+    - nightly
+
+addon:
+    mariadb: '10.0'
+
+before_install:
+    - mysql -e "create database IF NOT EXISTS baddeed_test;" -uroot
+    - mysql -e "create user deed_test;" -uroot
+    - mysql -e "grant all privileges on baddeed_test.* to deed_test@'localhost' identified by 'deed_test'" -uroot
+    - mysql -e "flush privileges;" -uroot
+
+install:
+    - composer install
+    - mysql -u root baddeed_test < vendor/dmelo/baddeeds-logic/setup/db/create.sql 
+
+script:
+    - phpunit
+
