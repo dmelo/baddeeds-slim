@@ -1,10 +1,34 @@
 <?php
+
+use BadDeeds\Controller\Api;
 // Routes
 
-$app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+
+// Insert new deed.
+$app->post('/insert', function ($request, $response, $args) {
+    $badDeed = new Api($this->db);
+    var_dump($request);
+});
+
+// List latest deeds.
+$app->get('/list[/{page}[/{size}]]', function ($request, $response, $args) {
+    $this->logger->info("route /list");
+    $badDeed = new Api($this->db);
+    $page = isset($args['page']) ? (int) $args['page'] : 0;
+    $size = isset($args['size']) ? (int) $args['size'] : 10;
+
+
+    $response->withJson($badDeed->list($page, $size));
+});
+
+// Identify the application.
+$app->get('/', function ($request, $response, $args) {
+    $this->logger->info("route /");
 
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    $response->withJson([
+        'app' => 'BadDeed',
+        'version' => '0.1.0',
+        'type' => 'restful',
+    ]);
 });

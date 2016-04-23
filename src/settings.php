@@ -13,5 +13,13 @@ return [
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
         ],
+
+        // Database
+        'db' => [
+            'user' => 'deed',
+            'pass' => 'deed',
+            'host' => 'localhost',
+            'dbname' => 'baddeed',
+        ],
     ],
 ];

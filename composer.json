@@ -1,20 +1,28 @@
 {
-    "name": "slim/slim-skeleton",
+    "name": "dmelo/baddeeds-slim",
     "description": "A Slim Framework skeleton application for rapid development",
     "keywords": ["microframework","rest","router", "psr7"],
     "homepage": "http://github.com/slimphp/Slim-Skeleton",
     "license": "MIT",
+    "require": {
+        "php": ">=7.0",
+        "slim/slim": "^3.3",
+        "slim/php-view": "^2.1",
+        "monolog/monolog": "^1.18",
+        "dmelo/baddeeds-logic": "^0.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BadDeeds\\Test\\": "tests/BadDeeds/Test"
+        }
+    },
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Diogo Oliveira de Melo",
+            "email": "dmelo87@gmail.com"
         }
-    ],
-    "require": {
-        "php": ">=5.5.0",
-        "slim/slim": "^3.1",
-        "slim/php-view": "^2.0",
-        "monolog/monolog": "^1.17"
-    }
+    ]
 }

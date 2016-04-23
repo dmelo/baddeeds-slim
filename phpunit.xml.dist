@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+    <testsuites>
+        <testsuite name="BadDeeds Test Suite">
+            <directory>tests/BadDeeds/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="date.timezone" value="UTC"/>
+        <var name="settings" value="
+return [
+    'settings' => [
+        'db' => [
+            'user' => 'deed_test',
+            'pass' => 'deed_test',
+            'host' => 'localhost',
+            'dbname' => 'baddeed_test',
+        ],
+    ],
+];"/>
+    </php>
+</phpunit>
